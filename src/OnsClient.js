@@ -7,6 +7,7 @@ import '@material/mwc-drawer';
 import '@material/mwc-button';
 import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
+import { MyArticle } from './MyArticle.js';
 
 
 export class OnsClient extends LitElement {
@@ -61,19 +62,13 @@ export class OnsClient extends LitElement {
       main.container {
         display: flex;
         flex-flow: row wrap;
+        padding-left: 1%;
+        padding-top: 1%;
       }
 
-      section.card {
-        max-width: 48%;
+      my-article {
+        width: 40%;
       }
-
-      section.card p {
-        color: white;
-        position: absolute;
-        bottom: 20%;
-        left: 1%;
-      }
-
     `;
   }
 
@@ -116,13 +111,15 @@ export class OnsClient extends LitElement {
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
           <main class="container">
-            <section class="card">
-              <img src="./assets/tulips.jpg" alt="tuplips" style="width: 100%">
-              <p>Marknesse tulips</p>
-            </section>
+            <my-article
+            .title="Marknesse tulips in bloom"
+            .description="./assets/tulips.jpg">
+          </my-article>
           </main>
         </div>
       </mwc-drawer>
     `;
   }
 }
+
+
