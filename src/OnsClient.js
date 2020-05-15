@@ -70,7 +70,7 @@ export class OnsClient extends LitElement {
       article.card {
         color: white;
         background-size: contain;
-        background-image: url('/images/tulips.jpg')
+        background-image: url('./assets/tulips.jpg')
       }
 
     `;

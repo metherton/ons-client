@@ -31,7 +31,7 @@ export default merge(baseConfig, {
   // input: './app.js',
   plugins: [
     copy({
-      targets: [{ src: 'images/**/*', dest: '/dist' }],
+      targets: [{ src: './assets/**/*', dest: './dist' }],
       // set flatten to false to preserve folder structure
       flatten: false,
     }),
