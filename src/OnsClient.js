@@ -35,10 +35,6 @@ export class OnsClient extends LitElement {
         width: 100%;
       }
 
-      main {
-        flex-grow: 1;
-      }
-
       .logo > svg {
         margin-top: 36px;
         animation: app-logo-spin infinite 20s linear;
@@ -62,15 +58,20 @@ export class OnsClient extends LitElement {
         margin-left: 5px;
       }
 
-      section.container {
+      main.container {
         display: flex;
         flex-flow: row wrap;
       }
 
-      article.card {
+      section.card {
+        max-width: 48%;
+      }
+
+      section.card p {
         color: white;
-        background-size: contain;
-        background-image: url('./assets/tulips.jpg')
+        position: absolute;
+        bottom: 20%;
+        left: 1%;
       }
 
     `;
@@ -114,9 +115,12 @@ export class OnsClient extends LitElement {
             <mwc-icon-button icon="search" slot="actionItems"></mwc-icon-button>
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
-          <div class="container">
-            <article class="card">Marknesse</article>
-          </div>
+          <main class="container">
+            <section class="card">
+              <img src="./assets/tulips.jpg" alt="tuplips" style="width: 100%">
+              <p>Marknesse tulips</p>
+            </section>
+          </main>
         </div>
       </mwc-drawer>
     `;
