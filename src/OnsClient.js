@@ -15,7 +15,13 @@ export class OnsClient extends LitElement {
     return {
       title: { type: String },
       page: { type: String },
+      bla: { type: String },
     };
+  }
+
+  constructor() {
+    super();
+    this.bla = 'hello world';
   }
 
   static get styles() {
@@ -65,8 +71,6 @@ export class OnsClient extends LitElement {
         padding-left: 1%;
         padding-top: 1%;
       }
-
-
     `;
   }
 
@@ -101,25 +105,15 @@ export class OnsClient extends LitElement {
           </mwc-list-item>
         </mwc-list>
 
-        <div style="display:flex;color: black" slot="appContent">
+        <div slot="appContent">
           <mwc-top-app-bar>
             <mwc-icon-button @click="${this.toggleDrawer}" slot="navigationIcon" icon="menu"></mwc-icon-button>
             <div slot="title">Etherton ONS</div>
             <mwc-icon-button icon="search" slot="actionItems"></mwc-icon-button>
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
-          <div>here we gsadfasd asdfasdf sadfsadf o</div>
           <main class="container">
-          <br>masf
-          <br>asdfa
-          <br>asdfa
-          <br>asdfa
-          <br>asdfa<br>
-
-            <my-article
-            .title="Marknesse tulips in bloom"
-            .description="./assets/tulips.jpg">
-          </my-article>
+            <my-article .title1=${this.bla}></my-article>
           </main>
         </div>
       </mwc-drawer>

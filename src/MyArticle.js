@@ -7,6 +7,8 @@ export class MyArticle extends LitElement {
       :host {
         position: relative;
         color: white;
+        display: block;
+        width: 100%;
       }
 
       p {
@@ -17,11 +19,21 @@ export class MyArticle extends LitElement {
     `;
   }
 
+  constructor() {
+    super();
+  }
+
+  static get properties() {
+    return {
+      title1: { type: String },
+    };
+  }
+
   render() {
     return html`
       <section>
         <img src='./assets/tulips.jpg' style='width: 100%'>
-        <p>Marknesse tulips</p>
+        <p>${this.title1}</p>
       </section>
     `;
   }
