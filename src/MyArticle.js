@@ -4,13 +4,15 @@ export class MyArticle extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        position: relative;
+        color: white;
+      }
+
       p {
         position: absolute;
-        left: 1%;
-        bottom: 1%;
-        color: white;
-        padding-left: 1%;
-        padding-right: 1%;
+        bottom: 8px;
+        left: 16px;
       }
     `;
   }

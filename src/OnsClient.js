@@ -66,9 +66,7 @@ export class OnsClient extends LitElement {
         padding-top: 1%;
       }
 
-      my-article {
-        width: 40%;
-      }
+
     `;
   }
 
@@ -103,14 +101,21 @@ export class OnsClient extends LitElement {
           </mwc-list-item>
         </mwc-list>
 
-        <div slot="appContent">
+        <div style="display:flex;color: black" slot="appContent">
           <mwc-top-app-bar>
             <mwc-icon-button @click="${this.toggleDrawer}" slot="navigationIcon" icon="menu"></mwc-icon-button>
             <div slot="title">Etherton ONS</div>
             <mwc-icon-button icon="search" slot="actionItems"></mwc-icon-button>
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
+          <div>here we gsadfasd asdfasdf sadfsadf o</div>
           <main class="container">
+          <br>masf
+          <br>asdfa
+          <br>asdfa
+          <br>asdfa
+          <br>asdfa<br>
+
             <my-article
             .title="Marknesse tulips in bloom"
             .description="./assets/tulips.jpg">
