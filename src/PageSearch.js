@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import '@material/mwc-textfield';
 
 export class PageSearch extends LitElement {
 
@@ -8,7 +9,7 @@ export class PageSearch extends LitElement {
 
   render() {
     return html`
-      search page
+      <mwc-textfield label="My Textfield"></mwc-textfield>
     `;
   }
 

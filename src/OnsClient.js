@@ -7,7 +7,7 @@ import '@material/mwc-drawer';
 import '@material/mwc-button';
 import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
-import { MyArticle } from './MyArticle.js';
+
 import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
 
@@ -15,16 +15,12 @@ import { PageSearch } from './PageSearch.js';
 export class OnsClient extends LitElement {
   static get properties() {
     return {
-      articleDescription: { type: String },
       page: { type: String },
-      imageLocation: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.articleDescription = 'Marknesse tulips';
-    this.imageLocation = './assets/tulips.jpg';
     this.page = 'home';
   }
 
@@ -77,6 +73,10 @@ export class OnsClient extends LitElement {
       div.article {
         width: 25%;
         padding: 1%;
+      }
+
+      mwc-top-app-bar {
+        --mdc-theme-primary: black;
       }
 
     `;
@@ -147,6 +147,7 @@ export class OnsClient extends LitElement {
   __onNavClicked(ev) {
     ev.preventDefault();
     this.page = ev.currentTarget.id;
+    this.toggleDrawer(ev);
   }
 
   __navClass(page) {
