@@ -8,6 +8,8 @@ import '@material/mwc-button';
 import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
 import { MyArticle } from './MyArticle.js';
+import { PageHome } from './PageHome.js';
+import { PageSearch } from './PageSearch.js';
 
 
 export class OnsClient extends LitElement {
@@ -22,7 +24,8 @@ export class OnsClient extends LitElement {
   constructor() {
     super();
     this.articleDescription = 'Marknesse tulips';
-    this.imageLocation = './assets/tulips.jpg'
+    this.imageLocation = './assets/tulips.jpg';
+    this.page = 'home';
   }
 
   static get styles() {
@@ -87,11 +90,11 @@ export class OnsClient extends LitElement {
     return html`
       <mwc-drawer id="leftdrawer" type="dismissible">
         <mwc-list>
-          <mwc-list-item graphic="icon">
+          <mwc-list-item id="home" @click=${this.__onNavClicked} graphic="icon">
             <span>Home</span>
             <mwc-icon slot="graphic">home</mwc-icon>
           </mwc-list-item>
-          <mwc-list-item graphic="icon">
+          <mwc-list-item id="search" @click=${this.__onNavClicked} graphic="icon">
             <span>Search & Browse</span>
             <mwc-icon slot="graphic">search</mwc-icon>
           </mwc-list-item>
@@ -117,20 +120,39 @@ export class OnsClient extends LitElement {
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
           <main class="container">
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
+            ${this._renderPage()}
           </main>
         </div>
       </mwc-drawer>
     `;
   }
+
+  _renderPage() {
+    switch (this.page) {
+      case 'home':
+        return html`
+          <page-home></page-home>
+        `;
+      case 'search':
+        return html`
+          <page-search></page-search>
+        `;
+      default:
+        return html`
+          <p>Page not found try going to <a href="#home">Home</a></p>
+        `;
+    }
+  }
+
+  __onNavClicked(ev) {
+    ev.preventDefault();
+    this.page = ev.currentTarget.id;
+  }
+
+  __navClass(page) {
+    return classMap({ active: this.page === page });
+  }
+
 }
 
 
