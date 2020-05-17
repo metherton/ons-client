@@ -7,7 +7,7 @@ export class PageHome extends LitElement {
   constructor() {
     super();
     this.articleDescription = 'Marknesse tulips';
-    this.imageLocation = './assets/tulips.jpg';
+    this.imageLocation = './assets/house.jpeg';
   }
 
   static get properties() {
@@ -30,42 +30,20 @@ export class PageHome extends LitElement {
         margin: 0 auto;
         text-align: center;
       }
-
-      mwc-drawer {
-        width: 100%;
+      .container {
+        position: relative;
+        max-width: 1250px; /* Maximum width */
+        margin: 0 auto; /* Center it */
       }
 
-      .logo > svg {
-        margin-top: 36px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .app-footer {
-        font-size: calc(12px + 0.5vmin);
-        align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
-      }
-
-      main.container {
-        display: flex;
-        flex-flow: row wrap;
-      }
-
-      div.article {
-        width: 25%;
-        padding: 1%;
+      .container .content {
+        position: absolute; /* Position the background text */
+        bottom: 50%; /* At the bottom. Use top:0 to append it to the top */
+        background: rgb(0, 0, 0); /* Fallback color */
+        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+        color: #f1f1f1; /* Grey text */
+        width: 100%; /* Full width */
+        padding: 20px; /* Some padding */
       }
 
     `;
@@ -73,8 +51,13 @@ export class PageHome extends LitElement {
 
   render() {
     return html`
-           home page
-
+      <main class="container">
+        <img src="/assets/house.jpeg" alt="Tulips" style="width:100%;">
+        <section class="content">
+          <h1>Welcome to the Etherton One Name Study</h1>
+          <p>Discover more about your Etherton ancestors and roots</p>
+        </section>
+      </main>
     `;
   }
 
