@@ -13,15 +13,16 @@ import { MyArticle } from './MyArticle.js';
 export class OnsClient extends LitElement {
   static get properties() {
     return {
-      title: { type: String },
+      articleDescription: { type: String },
       page: { type: String },
-      bla: { type: String },
+      imageLocation: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.bla = 'hello world';
+    this.articleDescription = 'Marknesse tulips';
+    this.imageLocation = './assets/tulips.jpg'
   }
 
   static get styles() {
@@ -68,9 +69,13 @@ export class OnsClient extends LitElement {
       main.container {
         display: flex;
         flex-flow: row wrap;
-        padding-left: 1%;
-        padding-top: 1%;
       }
+
+      div.article {
+        width: 25%;
+        padding: 1%;
+      }
+
     `;
   }
 
@@ -81,7 +86,6 @@ export class OnsClient extends LitElement {
   render() {
     return html`
       <mwc-drawer id="leftdrawer" type="dismissible">
-
         <mwc-list>
           <mwc-list-item graphic="icon">
             <span>Home</span>
@@ -113,7 +117,15 @@ export class OnsClient extends LitElement {
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
           <main class="container">
-            <my-article .title1=${this.bla}></my-article>
+            <div class="article">
+              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
+            </div>
+            <div class="article">
+              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
+            </div>
+            <div class="article">
+              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
+            </div>
           </main>
         </div>
       </mwc-drawer>

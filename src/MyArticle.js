@@ -25,15 +25,16 @@ export class MyArticle extends LitElement {
 
   static get properties() {
     return {
-      title1: { type: String },
+      imageLocation: { type: String },
+      articleDescription: { type: String },
     };
   }
 
   render() {
     return html`
       <section>
-        <img src='./assets/tulips.jpg' style='width: 100%'>
-        <p>${this.title1}</p>
+        <img src=${this.imageLocation} style='width: 100%'>
+        <p>${this.articleDescription}</p>
       </section>
     `;
   }
