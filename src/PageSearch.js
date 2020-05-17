@@ -6,8 +6,19 @@ export class PageSearch extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: flex-start;
+        font-size: calc(10px + 2vmin);
+        color: #1a2b42;
+        margin: 0 auto;
+      }
+
       article {
-        padding: 5%;
+        padding: 1%;
       }
     `;
   }
