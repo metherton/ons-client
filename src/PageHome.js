@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { MyArticle } from './MyArticle.js';
 
+
 export class PageHome extends LitElement {
 
   constructor() {
@@ -72,15 +73,8 @@ export class PageHome extends LitElement {
 
   render() {
     return html`
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
-            <div class="article">
-              <my-article .imageLocation=${this.imageLocation} .articleDescription=${this.articleDescription}></my-article>
-            </div>
+           home page
+
     `;
   }
 

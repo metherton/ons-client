@@ -1,7 +1,16 @@
 import { LitElement, html, css } from 'lit-element';
 import '@material/mwc-textfield';
+import '@material/mwc-button';
 
 export class PageSearch extends LitElement {
+
+  static get styles() {
+    return css`
+      article {
+        padding: 5%;
+      }
+    `;
+  }
 
   constructor() {
     super();
@@ -9,7 +18,17 @@ export class PageSearch extends LitElement {
 
   render() {
     return html`
-      <mwc-textfield label="My Textfield"></mwc-textfield>
+      <section>
+        <article>
+          <mwc-textfield label="First Name"></mwc-textfield>
+        </article>
+        <article>
+          <mwc-textfield label="Surname"></mwc-textfield>
+        </article>
+        <article>
+          <mwc-button raised icon="search" label="Search"></mwc-button>
+        </article>
+      </section>
     `;
   }
 
