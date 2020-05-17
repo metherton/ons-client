@@ -12,21 +12,55 @@ export class PageSearch extends LitElement {
     `;
   }
 
+  static get properties() {
+    return {
+      persons: {type: Array},
+      firstName: {type: String},
+      surname: {type: String},
+    };
+  }
+
   constructor() {
     super();
+    this.persons = [];
+    this.firstName = '';
+    this.surname = '';
+  }
+
+  updateFirstName(e) {
+    this.firstName = e.target.value;
+  }
+
+  updateSurname(e) {
+    this.surname = e.target.value;
+  }
+
+  handleClick(e) {
+    const request = 'http://www.martinetherton.com:8080/persons?firstName=' + this.firstName + '&surname=' + this.surname;
+    fetch(request)
+      .then(response => response.json())
+      .then((response) => {
+        this.persons = response[0];
+        let event = new CustomEvent('show-persons', {
+          detail: {
+            persons: this.persons
+          }
+        });
+        this.dispatchEvent(event);
+      });
   }
 
   render() {
     return html`
       <section>
         <article>
-          <mwc-textfield label="First Name"></mwc-textfield>
+          <mwc-textfield @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
         </article>
         <article>
-          <mwc-textfield label="Surname"></mwc-textfield>
+          <mwc-textfield @change="${this.updateSurname}" label="Surname"></mwc-textfield>
         </article>
         <article>
-          <mwc-button raised icon="search" label="Search"></mwc-button>
+          <mwc-button @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>
         </article>
       </section>
     `;

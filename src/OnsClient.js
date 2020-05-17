@@ -10,18 +10,21 @@ import '@material/mwc-list/mwc-list-item';
 
 import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
+import { PageSearchResults } from './PageSearchResults.js';
 
 
 export class OnsClient extends LitElement {
   static get properties() {
     return {
       page: { type: String },
+      persons: {type: Array},
     };
   }
 
   constructor() {
     super();
     this.page = 'home';
+    this.persons = [];
   }
 
   static get styles() {
@@ -86,6 +89,12 @@ export class OnsClient extends LitElement {
     this.shadowRoot.getElementById('leftdrawer').open = !this.shadowRoot.getElementById('leftdrawer').open;
   }
 
+  showPersons(e) {
+    this.page = 'results';
+    this.persons = e.detail.persons;
+    this._renderPage()
+  }
+
   render() {
     return html`
       <mwc-drawer id="leftdrawer" type="dismissible">
@@ -135,7 +144,11 @@ export class OnsClient extends LitElement {
         `;
       case 'search':
         return html`
-          <page-search></page-search>
+          <page-search @show-persons=${this.showPersons}></page-search>
+        `;
+      case 'results':
+        return html`
+          <page-search-results .persons=${this.persons}></page-search-results>
         `;
       default:
         return html`
