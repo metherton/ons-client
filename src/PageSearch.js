@@ -18,7 +18,7 @@ export class PageSearch extends LitElement {
       }
 
       article {
-        padding: 1%;
+        padding: 1% 1% 1% 2%;
       }
     `;
   }

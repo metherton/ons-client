@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { MyArticle } from './MyArticle.js';
-
+import '@material/mwc-list';
 
 export class PageHome extends LitElement {
 
@@ -32,7 +32,7 @@ export class PageHome extends LitElement {
       }
       .container {
         position: relative;
-        max-width: 1250px; /* Maximum width */
+        max-width: 100%; /* Maximum width */
         margin: 0 auto; /* Center it */
       }
 
@@ -43,7 +43,14 @@ export class PageHome extends LitElement {
         background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
         color: #f1f1f1; /* Grey text */
         width: 100%; /* Full width */
-        padding: 20px; /* Some padding */
+      }
+
+      mwc-list {
+        width: 100%;
+        font-weight: bold;
+      }
+      mwc-list-item {
+        font-weight: bold;
       }
 
     `;
@@ -51,13 +58,34 @@ export class PageHome extends LitElement {
 
   render() {
     return html`
-      <main class="container">
-        <img src="/assets/house.jpeg" alt="Tulips" style="width:100%;">
-        <section class="content">
-          <h1>Welcome to the Etherton One Name Study</h1>
-          <p>Discover more about your Etherton ancestors and roots</p>
-        </section>
-      </main>
+    <mwc-list>
+      <mwc-list-item style="height: 100%;">
+        <main class="container">
+          <img src="/assets/house.jpeg" alt="Tulips" style="width:100%;">
+          <section class="content">
+            <h1>Etherton One Name Study</h1>
+            <p>Learn about your Etherton ancestors and roots</p>
+          </section>
+        </main>
+      </mwc-list-item>
+      <mwc-list-item>Search All Records</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item>Search Births, Marriages & Deaths</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item>Search Census & Electoral Rolls</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item>Explore our Etherton DNA project</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item>Contact Us</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item>About Us</mwc-list-item>
+      <li divider role="separator"></li>
+      <mwc-list-item style="height: 100%;">
+        <main class="container">
+          <img src="/assets/banner_web.gif" alt="Guild of One Name Studies"">
+        </main>
+      </mwc-list-item>
+    </mwc-list>
     `;
   }
 
