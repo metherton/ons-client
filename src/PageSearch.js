@@ -22,15 +22,7 @@ export class PageSearch extends LitElement {
         padding: 1% 1% 1% 2%;
       }
 
-      section {
-        opacity: 1;
-        transition-property: opacity;
-        transition-duration: 1s;
-      }
 
-      section.clicked {
-        opacity: 0.2;
-      }
     `;
   }
 
@@ -58,10 +50,16 @@ export class PageSearch extends LitElement {
   }
 
   handleClick(e) {
+    const firstName = this.shadowRoot.getElementById('firstName');
+    const surname = this.shadowRoot.getElementById('surname');
+    const submit = this.shadowRoot.getElementById('submit');
+    firstName.disabled = true;
+    surname.disabled = true;
+    submit.disabled = true;
     const progressBar = this.shadowRoot.getElementById('progress');
     progressBar.open();
-    const section = this.shadowRoot.getElementById('container');
-    section.classList.add('clicked');
+//    const section = this.shadowRoot.getElementById('container');
+//    section.classList.add('clicked');
     const request = 'http://www.martinetherton.com:8080/persons?firstName=' + this.firstName + '&surname=' + this.surname;
     fetch(request)
       .then(response => response.json())
@@ -81,13 +79,13 @@ export class PageSearch extends LitElement {
     return html`
       <section id="container">
         <article>
-          <mwc-textfield @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
+          <mwc-textfield id="firstName" @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
         </article>
         <article>
-          <mwc-textfield @change="${this.updateSurname}" label="Surname"></mwc-textfield>
+          <mwc-textfield id="surname" @change="${this.updateSurname}" label="Surname"></mwc-textfield>
         </article>
         <article>
-          <mwc-button @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>
+          <mwc-button id="submit" @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>
         </article>
       </section>
       <mwc-linear-progress id="progress" closed indeterminate></mwc-linear-progress>

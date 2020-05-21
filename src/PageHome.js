@@ -74,6 +74,8 @@ export class PageHome extends LitElement {
       <li divider role="separator"></li>
       <mwc-list-item>Search Census & Electoral Rolls</mwc-list-item>
       <li divider role="separator"></li>
+      <mwc-list-item>Search Etherton family trees</mwc-list-item>
+      <li divider role="separator"></li>
       <mwc-list-item>Explore our Etherton DNA project</mwc-list-item>
       <li divider role="separator"></li>
       <mwc-list-item>Contact Us</mwc-list-item>

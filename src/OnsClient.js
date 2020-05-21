@@ -10,8 +10,8 @@ import '@material/mwc-list/mwc-list-item';
 
 import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
+import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageSearchResults } from './PageSearchResults.js';
-
 
 export class OnsClient extends LitElement {
   static get properties() {
@@ -68,7 +68,7 @@ export class OnsClient extends LitElement {
             <span>Search & Browse</span>
             <mwc-icon slot="graphic">search</mwc-icon>
           </mwc-list-item>
-          <mwc-list-item graphic="icon">
+          <mwc-list-item id="familyTrees" @click=${this.__onNavClicked}  graphic="icon">
             <span>Family Trees</span>
             <mwc-icon slot="graphic">nature_people</mwc-icon>
           </mwc-list-item>
@@ -106,6 +106,10 @@ export class OnsClient extends LitElement {
       case 'search':
         return html`
           <page-search @show-persons=${this.showPersons}></page-search>
+        `;
+      case 'familyTrees':
+        return html`
+          <page-family-trees @show-persons=${this.showPersons}></page-family-trees>
         `;
       case 'results':
         return html`
