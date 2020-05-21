@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import '@material/mwc-textfield';
 import '@material/mwc-button';
+import '@material/mwc-linear-progress';
 
 export class PageSearch extends LitElement {
 
@@ -19,6 +20,16 @@ export class PageSearch extends LitElement {
 
       article {
         padding: 1% 1% 1% 2%;
+      }
+
+      section {
+        opacity: 1;
+        transition-property: opacity;
+        transition-duration: 1s;
+      }
+
+      section.clicked {
+        opacity: 0.2;
       }
     `;
   }
@@ -47,10 +58,15 @@ export class PageSearch extends LitElement {
   }
 
   handleClick(e) {
+    const progressBar = this.shadowRoot.getElementById('progress');
+    progressBar.open();
+    const section = this.shadowRoot.getElementById('container');
+    section.classList.add('clicked');
     const request = 'http://www.martinetherton.com:8080/persons?firstName=' + this.firstName + '&surname=' + this.surname;
     fetch(request)
       .then(response => response.json())
       .then((response) => {
+        progressBar.close();
         this.persons = response[0];
         let event = new CustomEvent('show-persons', {
           detail: {
@@ -63,7 +79,7 @@ export class PageSearch extends LitElement {
 
   render() {
     return html`
-      <section>
+      <section id="container">
         <article>
           <mwc-textfield @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
         </article>
@@ -74,6 +90,7 @@ export class PageSearch extends LitElement {
           <mwc-button @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>
         </article>
       </section>
+      <mwc-linear-progress id="progress" closed indeterminate></mwc-linear-progress>
     `;
   }
 

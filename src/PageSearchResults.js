@@ -48,18 +48,24 @@ export class PageSearchResults extends LitElement {
 
             }
             ).map(person => html`
-              <mwc-list-item twoline>
-                <span>${person.firstName}&nbsp;${person.surname}</span>
-                <span slot="secondary">${person.place}&nbsp;${person.dateOfBirth}</span>
+              <mwc-list-item noninteractive>
+                <h3>${person.firstName}&nbsp;${person.surname}</h3>
               </mwc-list-item>
-              <li divider role="separator"></li>
+              <mwc-list-item style="height:20px" noninteractive>Sex:&nbsp;${person.sex}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Father:&nbsp;${person.parentRelation}</mwc-list-item>
+              <li style="margin-top: 15px;" divider role="separator"></li>
             `)}
             ${this.persons.filter(person => person.surname !== "" && person.surname.toUpperCase() !== "ETHERTON" && person.firstName !== "").map(person => html`
-              <mwc-list-item twoline>
-                <span>${person.firstName}&nbsp;${person.surname}</span>
-                <span slot="secondary">${person.place}&nbsp;${person.dateOfBirth}</span>
+              <mwc-list-item noninteractive>
+                <h3>${person.firstName}&nbsp;${person.surname}</h3>
               </mwc-list-item>
-              <li divider role="separator"></li>
+              <mwc-list-item style="height:20px" noninteractive>Sex:&nbsp;${person.sex}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</mwc-list-item>
+              <mwc-list-item style="height:20px" noninteractive>Father:&nbsp;${person.parentRelation}</mwc-list-item>
+              <li style="margin-top: 15px;" divider role="separator"></li>
             `)}
       </mwc-list>
     `;
