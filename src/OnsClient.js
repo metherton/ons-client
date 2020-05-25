@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
 import '@material/mwc-button';
 import '@material/mwc-top-app-bar';
 import '@material/mwc-icon-button';
@@ -12,6 +11,27 @@ import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
 import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageSearchResults } from './PageSearchResults.js';
+
+import { createStore } from 'redux';
+
+var defaultState = {
+  persons: []
+};
+function persons(state = defaultState, action) {
+  if (action.type === 'ADD') {
+    state.persons[state.persons.length] = {id: action.data};
+  }
+  return state;
+}
+
+var store = createStore(persons);
+store.subscribe(function() {
+  console.log('store', store.getState());
+})
+store.dispatch({type: 'ADD', data: Math.random()});
+store.dispatch({type: 'ADD', data: Math.random()});
+store.dispatch({type: 'ADD', data: Math.random()});
+
 
 export class OnsClient extends LitElement {
   static get properties() {
@@ -29,22 +49,13 @@ export class OnsClient extends LitElement {
 
   static get styles() {
     return css`
-      :host {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        justify-content: flex-start;
-        font-size: calc(10px + 2vmin);
-        color: #1a2b42;
-        margin: 0 auto;
-      }
-
       mwc-top-app-bar {
         --mdc-theme-primary: black;
       }
     `;
   }
+
+
 
   toggleDrawer(e) {
     this.shadowRoot.getElementById('leftdrawer').open = !this.shadowRoot.getElementById('leftdrawer').open;
