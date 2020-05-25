@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import '@material/mwc-linear-progress';
+import store from './store/configureStore';
 
 export class PageFamilyTrees extends LitElement {
 
@@ -30,7 +31,6 @@ export class PageFamilyTrees extends LitElement {
 
   static get properties() {
     return {
-      persons: {type: Array},
       firstName: {type: String},
       surname: {type: String},
     };
@@ -38,7 +38,6 @@ export class PageFamilyTrees extends LitElement {
 
   constructor() {
     super();
-    this.persons = [];
     this.firstName = '';
     this.surname = '';
   }
@@ -71,11 +70,10 @@ export class PageFamilyTrees extends LitElement {
       .then(response => response.json())
       .then((response) => {
         progressBar.close();
-        this.persons = response[0];
+     //   this.persons = response[0];
+        store.dispatch({type: 'ADD', data: response[0]});
         let event = new CustomEvent('show-persons', {
-          detail: {
-            persons: this.persons
-          }
+          detail: {}
         });
         this.dispatchEvent(event);
       });

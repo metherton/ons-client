@@ -12,26 +12,7 @@ import { PageSearch } from './PageSearch.js';
 import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageSearchResults } from './PageSearchResults.js';
 
-import { createStore } from 'redux';
-
-var defaultState = {
-  persons: []
-};
-function persons(state = defaultState, action) {
-  if (action.type === 'ADD') {
-    state.persons[state.persons.length] = {id: action.data};
-  }
-  return state;
-}
-
-var store = createStore(persons);
-store.subscribe(function() {
-  console.log('store', store.getState());
-})
-store.dispatch({type: 'ADD', data: Math.random()});
-store.dispatch({type: 'ADD', data: Math.random()});
-store.dispatch({type: 'ADD', data: Math.random()});
-
+import store from './store/configureStore';
 
 export class OnsClient extends LitElement {
   static get properties() {
@@ -55,15 +36,12 @@ export class OnsClient extends LitElement {
     `;
   }
 
-
-
   toggleDrawer(e) {
     this.shadowRoot.getElementById('leftdrawer').open = !this.shadowRoot.getElementById('leftdrawer').open;
   }
 
   showPersons(e) {
     this.page = 'results';
-    this.persons = e.detail.persons;
     this._renderPage()
   }
 
@@ -124,7 +102,7 @@ export class OnsClient extends LitElement {
         `;
       case 'results':
         return html`
-          <page-search-results .persons=${this.persons}></page-search-results>
+          <page-search-results .persons=${store.getState().persons}></page-search-results>
         `;
       default:
         return html`

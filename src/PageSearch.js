@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import '@material/mwc-textfield';
 import '@material/mwc-button';
 import '@material/mwc-linear-progress';
+import store from './store/configureStore';
 
 export class PageSearch extends LitElement {
 
@@ -28,7 +29,6 @@ export class PageSearch extends LitElement {
 
   static get properties() {
     return {
-      persons: {type: Array},
       firstName: {type: String},
       surname: {type: String},
     };
@@ -65,10 +65,10 @@ export class PageSearch extends LitElement {
       .then(response => response.json())
       .then((response) => {
         progressBar.close();
-        this.persons = response[0];
+     //   this.persons = response[0];
+        store.dispatch({type: 'ADD', data: response[0]});
         let event = new CustomEvent('show-persons', {
           detail: {
-            persons: this.persons
           }
         });
         this.dispatchEvent(event);
