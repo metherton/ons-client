@@ -107,6 +107,7 @@ export class PageFamilyTrees extends LitElement {
         </mwc-list>
         <br />
         <mwc-linear-progress id="progress" closed indeterminate></mwc-linear-progress>
+
       </section>
     `;
   }

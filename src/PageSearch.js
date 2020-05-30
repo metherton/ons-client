@@ -23,7 +23,6 @@ export class PageSearch extends LitElement {
         padding: 1% 1% 1% 2%;
       }
 
-
     `;
   }
 
@@ -88,7 +87,9 @@ export class PageSearch extends LitElement {
           <mwc-button id="submit" @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>
         </article>
       </section>
-      <mwc-linear-progress id="progress" closed indeterminate></mwc-linear-progress>
+      <div style="width: 50%; text-align: center">
+        <mwc-linear-progress id="progress" closed progress="1"></mwc-linear-progress>
+      </div>
     `;
   }
 
