@@ -20,7 +20,7 @@ describe('OnsClient', () => {
 //   // expect(h1.textContent).to.equal('My app');
 //  });
 
-//  it('passes the a11y audit', async () => {
-//    await expect(element).shadowDom.to.be.accessible();
-//  });
+  it('passes the a11y audit', async () => {
+    await expect(element).shadowDom.to.be.accessible({ignoredRules: ['aria-allowed-role']});
+  });
 });

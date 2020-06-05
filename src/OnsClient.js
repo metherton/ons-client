@@ -49,39 +49,49 @@ export class OnsClient extends LitElement {
     return html`
       <mwc-drawer id="leftdrawer" type="dismissible">
         <mwc-list>
-          <mwc-list-item id="home" @click=${this.__onNavClicked} graphic="icon">
-            <span>Home</span>
-            <mwc-icon slot="graphic">home</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item id="search" @click=${this.__onNavClicked} graphic="icon">
-            <span>Search & Browse</span>
-            <mwc-icon slot="graphic">search</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item id="familyTrees" @click=${this.__onNavClicked}  graphic="icon">
-            <span>Family Trees</span>
-            <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item graphic="icon">
-            <span>DNA</span>
-            <mwc-icon slot="graphic">local_pharmacy</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item graphic="icon">
-            <span>Contact</span>
-            <mwc-icon slot="graphic">contact_support</mwc-icon>
-          </mwc-list-item>
+          <li>
+            <mwc-list-item id="home" @click=${this.__onNavClicked} graphic="icon">
+              <span>Home</span>
+              <mwc-icon slot="graphic">home</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item id="search" @click=${this.__onNavClicked} graphic="icon">
+              <span>Search & Browse</span>
+              <mwc-icon slot="graphic">search</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item id="familyTrees" @click=${this.__onNavClicked}  graphic="icon">
+              <span>Family Trees</span>
+              <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item graphic="icon">
+              <span>DNA</span>
+              <mwc-icon slot="graphic">local_pharmacy</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item graphic="icon">
+              <span>Contact</span>
+              <mwc-icon slot="graphic">contact_support</mwc-icon>
+            </mwc-list-item>
+          </li>
         </mwc-list>
 
-        <div slot="appContent">
+        <main slot="appContent">
           <mwc-top-app-bar>
             <mwc-icon-button @click="${this.toggleDrawer}" slot="navigationIcon" icon="menu"></mwc-icon-button>
             <div slot="title">Etherton ONS</div>
             <mwc-icon-button icon="search" slot="actionItems"></mwc-icon-button>
             <mwc-icon-button icon="help" slot="actionItems"></mwc-icon-button>
           </mwc-top-app-bar>
-          <main class="container">
+          <section class="container">
             ${this._renderPage()}
-          </main>
-        </div>
+          </section>
+        </main>
       </mwc-drawer>
     `;
   }

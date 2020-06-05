@@ -84,26 +84,36 @@ export class PageFamilyTrees extends LitElement {
       <section>
         <h3>Etherton Family Trees</h3>
         <mwc-list id="list" activatable>
-          <mwc-list-item @click="${this.handleClick}" id="london1" graphic="icon">
-              <span>London (1)</span>
-              <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item @click="${this.handleClick}" id="london2" graphic="icon">
-              <span>London (2)</span>
-              <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item @click="${this.handleClick}" id="sussex1" graphic="icon">
-              <span>Sussex (1)</span>
-              <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item @click="${this.handleClick}" id="sussex2" graphic="icon">
-              <span>Sussex (2)</span>
-              <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
-          <mwc-list-item @click="${this.handleClick}" id="usa1" graphic="icon">
-              <span>Illinois (1)</span>
-              <mwc-icon slot="graphic">nature_people</mwc-icon>
-          </mwc-list-item>
+          <li>
+            <mwc-list-item @click="${this.handleClick}" id="london1" graphic="icon">
+                <span>London (1)</span>
+                <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item @click="${this.handleClick}" id="london2" graphic="icon">
+                <span>London (2)</span>
+                <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item @click="${this.handleClick}" id="sussex1" graphic="icon">
+                <span>Sussex (1)</span>
+                <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item @click="${this.handleClick}" id="sussex2" graphic="icon">
+                <span>Sussex (2)</span>
+                <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
+          <li>
+            <mwc-list-item @click="${this.handleClick}" id="usa1" graphic="icon">
+                <span>Illinois (1)</span>
+                <mwc-icon slot="graphic">nature_people</mwc-icon>
+            </mwc-list-item>
+          </li>
         </mwc-list>
         <br />
         <mwc-linear-progress id="progress" closed indeterminate></mwc-linear-progress>
