@@ -62,7 +62,7 @@ export class OnsClient extends LitElement {
             </mwc-list-item>
           </li>
           <li>
-            <mwc-list-item id="familyTrees" @click=${this.__onNavClicked}  graphic="icon">
+            <mwc-list-item id="familyTrees" @click=${this.__onNavClicked} graphic="icon">
               <span>Family Trees</span>
               <mwc-icon slot="graphic">nature_people</mwc-icon>
             </mwc-list-item>
@@ -100,7 +100,7 @@ export class OnsClient extends LitElement {
     switch (this.page) {
       case 'home':
         return html`
-          <page-home></page-home>
+          <page-home @navigate=${this.__onNavClickedExternal}></page-home>
         `;
       case 'search':
         return html`
@@ -119,6 +119,11 @@ export class OnsClient extends LitElement {
           <p>Page not found try going to <a href="#home">Home</a></p>
         `;
     }
+  }
+
+  __onNavClickedExternal(ev) {
+    ev.preventDefault();
+    this.page = ev.detail;
   }
 
   __onNavClicked(ev) {

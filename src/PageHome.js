@@ -55,6 +55,11 @@ export class PageHome extends LitElement {
     `;
   }
 
+  __onNavClicked(ev) {
+    const page = ev.currentTarget.id.split('-')[1];
+    this.dispatchEvent(new CustomEvent('navigate', {detail: page}));
+  }
+
   render() {
     return html`
     <mwc-list>
@@ -82,7 +87,7 @@ export class PageHome extends LitElement {
       </li>
       <li divider role="separator"></li>
       <li>
-        <mwc-list-item>Search Etherton family trees</mwc-list-item>
+        <mwc-list-item id="home-familyTrees" @click=${this.__onNavClicked}>Search Etherton family trees</mwc-list-item>
       </li>
       <li divider role="separator"></li>
       <li>

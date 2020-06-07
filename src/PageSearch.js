@@ -59,7 +59,7 @@ export class PageSearch extends LitElement {
     progressBar.open();
 //    const section = this.shadowRoot.getElementById('container');
 //    section.classList.add('clicked');
-    const request = 'http://www.martinetherton.com:8080/persons?firstName=' + this.firstName + '&surname=' + this.surname;
+    const request = 'http://www.martinetherton.com:8080/gedcom/london1?firstName=' + this.firstName + '&surname=' + this.surname;
     fetch(request)
       .then(response => response.json())
       .then((response) => {
