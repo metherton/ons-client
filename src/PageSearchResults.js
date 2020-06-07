@@ -17,6 +17,18 @@ export class PageSearchResults extends LitElement {
       mwc-list {
         text-align: left;
         width: 100%;
+        margin-top: -8px;
+      }
+      .person {
+        height: 100%;
+      }
+      .person p, h3 {
+        padding: 0px;
+        margin: 0px;
+      }
+      mwc-list-item {
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
     `;
   }
@@ -48,24 +60,24 @@ export class PageSearchResults extends LitElement {
 
             }
             ).map(person => html`
-              <mwc-list-item noninteractive>
+              <mwc-list-item class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
+                <p>Sex:&nbsp;${person.sex}</p>
+                <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
+                <p>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</p>
+                <p>Father:&nbsp;${person.parentRelation}</p>
               </mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Sex:&nbsp;${person.sex}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Father:&nbsp;${person.parentRelation}</mwc-list-item>
-              <li style="margin-top: 15px;" divider role="separator"></li>
+              <li divider role="separator"></li>
             `)}
             ${this.persons.filter(person => person.surname !== "" && person.surname.toUpperCase() !== "ETHERTON" && person.firstName !== "").map(person => html`
-              <mwc-list-item noninteractive>
+              <mwc-list-item class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
+                <p>Sex:&nbsp;${person.sex}</p>
+                <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
+                <p>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</p>
+                <p>Father:&nbsp;${person.parentRelation}</p>
               </mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Sex:&nbsp;${person.sex}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</mwc-list-item>
-              <mwc-list-item style="height:20px" noninteractive>Father:&nbsp;${person.parentRelation}</mwc-list-item>
-              <li style="margin-top: 15px;" divider role="separator"></li>
+              <li divider role="separator"></li>
             `)}
       </mwc-list>
     `;
