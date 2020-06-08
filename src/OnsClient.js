@@ -11,6 +11,7 @@ import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
 import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageSearchResults } from './PageSearchResults.js';
+import { PagePerson } from './PagePerson.js';
 
 import store from './store/configureStore';
 
@@ -19,6 +20,7 @@ export class OnsClient extends LitElement {
     return {
       page: { type: String },
       persons: {type: Array},
+      person: {type: String},
     };
   }
 
@@ -26,6 +28,7 @@ export class OnsClient extends LitElement {
     super();
     this.page = 'home';
     this.persons = [];
+    this.person = '';
   }
 
   static get styles() {
@@ -42,7 +45,7 @@ export class OnsClient extends LitElement {
 
   showPersons(e) {
     this.page = 'results';
-    this._renderPage()
+    this._renderPage();
   }
 
   render() {
@@ -96,7 +99,7 @@ export class OnsClient extends LitElement {
     `;
   }
 
-  _renderPage() {
+  _renderPage(data) {
     switch (this.page) {
       case 'home':
         return html`
@@ -112,13 +115,24 @@ export class OnsClient extends LitElement {
         `;
       case 'results':
         return html`
-          <page-search-results .persons=${store.getState().persons}></page-search-results>
+          <page-search-results @navigate=${this.__onPersonSelected} .persons=${store.getState().persons}></page-search-results>
+        `;
+      case 'person':
+        return html`
+          <page-person .person="${this.person}"></page-person>
         `;
       default:
         return html`
           <p>Page not found try going to <a href="#home">Home</a></p>
         `;
     }
+  }
+
+  __onPersonSelected(ev) {
+    ev.preventDefault();
+    this.person = ev.detail.id;
+    this.page = ev.detail.page;
+    this._renderPage();
   }
 
   __onNavClickedExternal(ev) {

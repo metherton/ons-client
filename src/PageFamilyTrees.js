@@ -51,7 +51,8 @@ export class PageFamilyTrees extends LitElement {
   }
 
   handleClick(e) {
-    const request = 'http://www.martinetherton.com:8080/gedcom/' + e.currentTarget.id;
+   // const request = 'http://www.martinetherton.com:8080/gedcom/' + e.currentTarget.id;
+    const request = 'http://localhost:8080/gedcom/' + e.currentTarget.id;
     const list = this.shadowRoot.getElementById('list');
     const london1 = this.shadowRoot.getElementById('london1');
     london1.disabled = true;

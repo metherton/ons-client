@@ -46,6 +46,11 @@ export class PageSearchResults extends LitElement {
     this.persons = [];
   }
 
+  __onNavClicked(ev) {
+    const page = ev.currentTarget.id.split('-')[1];
+    this.dispatchEvent(new CustomEvent('navigate', {detail: {page: 'person', id: ev.currentTarget.id}}));
+  }
+
   render() {
     return html`
       <mwc-list>
@@ -60,22 +65,16 @@ export class PageSearchResults extends LitElement {
 
             }
             ).map(person => html`
-              <mwc-list-item class="person">
+              <mwc-list-item id=${person.id} @click=${this.__onNavClicked} class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
-                <p>Sex:&nbsp;${person.sex}</p>
                 <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
-                <p>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</p>
-                <p>Father:&nbsp;${person.parentRelation}</p>
               </mwc-list-item>
               <li divider role="separator"></li>
             `)}
             ${this.persons.filter(person => person.surname !== "" && person.surname.toUpperCase() !== "ETHERTON" && person.firstName !== "").map(person => html`
-              <mwc-list-item class="person">
+              <mwc-list-item id=${person.id} @click=${this.__onNavClicked} class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
-                <p>Sex:&nbsp;${person.sex}</p>
                 <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
-                <p>Died:&nbsp;${person.placeOfDeath}&nbsp;${person.dateOfDeath}</p>
-                <p>Father:&nbsp;${person.parentRelation}</p>
               </mwc-list-item>
               <li divider role="separator"></li>
             `)}
