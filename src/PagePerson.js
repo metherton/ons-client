@@ -28,7 +28,7 @@ export class PagePerson extends LitElement {
 
   static get properties() {
     return {
-      person: {type: String},
+      person: {type: Object},
     };
   }
 
@@ -38,7 +38,7 @@ export class PagePerson extends LitElement {
 
   render() {
     return html`
-      show details for person ${this.person}
+      show details for person first name ${this.person.firstName}
     `;
   }
 

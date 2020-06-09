@@ -13,7 +13,17 @@ import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageSearchResults } from './PageSearchResults.js';
 import { PagePerson } from './PagePerson.js';
 
+import { createStore } from 'redux'
+import onsApp from './reducers'
+
 import store from './store/configureStore';
+import {
+  addPerson,
+  setInitialPersons,
+  toggleTodo,
+  setPerson,
+  VisibilityFilters
+} from './actions'
 
 export class OnsClient extends LitElement {
   static get properties() {
@@ -119,7 +129,7 @@ export class OnsClient extends LitElement {
         `;
       case 'person':
         return html`
-          <page-person .person="${this.person}"></page-person>
+          <page-person .person=${store.getState().person}></page-person>
         `;
       default:
         return html`
@@ -130,9 +140,7 @@ export class OnsClient extends LitElement {
 
   __onPersonSelected(ev) {
     ev.preventDefault();
-    this.person = ev.detail.id;
-    this.page = ev.detail.page;
-    this._renderPage();
+    this.page = ev.detail;
   }
 
   __onNavClickedExternal(ev) {

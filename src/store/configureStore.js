@@ -1,17 +1,5 @@
-import { createStore } from 'redux';
+import { createStore } from 'redux'
+import onsApp from '../reducers'
 
-var defaultState = {
-  persons: []
-};
-function persons(state = defaultState, action) {
-  var newState;
-  if (action.type === 'ADD') {
-    newState = Object.assign({}, state, {persons: action.data});
-    return newState;
-  }
-  return state;
-}
-
-var store = createStore(persons);
-
+const store = createStore(onsApp)
 export default store;

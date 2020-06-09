@@ -1,6 +1,16 @@
 import { LitElement, html, css } from 'lit-element';
 import '@material/mwc-linear-progress';
+import { createStore } from 'redux'
+import onsApp from './reducers'
+
 import store from './store/configureStore';
+import {
+  addPerson,
+  setInitialPersons,
+  toggleTodo,
+  setPerson,
+  VisibilityFilters
+} from './actions'
 
 export class PageFamilyTrees extends LitElement {
 
@@ -72,7 +82,8 @@ export class PageFamilyTrees extends LitElement {
       .then((response) => {
         progressBar.close();
      //   this.persons = response[0];
-        store.dispatch({type: 'ADD', data: response[0]});
+        store.dispatch(setInitialPersons(response[0]));
+     //   store.dispatch({type: 'SET_INITIAL_PERSONS', data: response[0]});
         let event = new CustomEvent('show-persons', {
           detail: {}
         });

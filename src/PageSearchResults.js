@@ -3,6 +3,18 @@ import '@material/mwc-textfield';
 import '@material/mwc-button';
 import '@material/mwc-list';
 
+import { createStore } from 'redux'
+import onsApp from './reducers'
+
+import store from './store/configureStore';
+import {
+  addPerson,
+  setInitialPersons,
+  toggleTodo,
+  setPerson,
+  VisibilityFilters
+} from './actions'
+
 export class PageSearchResults extends LitElement {
 
   static get styles() {
@@ -47,8 +59,9 @@ export class PageSearchResults extends LitElement {
   }
 
   __onNavClicked(ev) {
-    const page = ev.currentTarget.id.split('-')[1];
-    this.dispatchEvent(new CustomEvent('navigate', {detail: {page: 'person', id: ev.currentTarget.id}}));
+    const person = this.persons.find(p => p.id === ev.currentTarget.id);
+    store.dispatch(setPerson(person));
+    this.dispatchEvent(new CustomEvent('navigate', {detail: 'person'}));
   }
 
   render() {
