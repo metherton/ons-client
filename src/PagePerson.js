@@ -19,10 +19,6 @@ export class PagePerson extends LitElement {
         margin: 0 auto;
       }
 
-      article {
-        padding: 1% 1% 1% 2%;
-      }
-
     `;
   }
 
@@ -38,7 +34,20 @@ export class PagePerson extends LitElement {
 
   render() {
     return html`
-      show details for person first name ${this.person.firstName}
+      <section>
+        <section>
+          <article>First Name:</article><article>${this.person.firstName}</article><article>Surname:</article><article>${this.person.surname}</article>
+        </section>
+        <section>
+          <article>Birth Date:</article><article>${this.person.dateOfBirth}</article><article>Place:</article><article>${this.person.place}</article>
+        </section>
+        <section>
+          <article>Death Date:</article><article>${this.person.dateOfDeath}</article><article>Place:</article><article>${this.person.placeOfDeath}</article>
+        </section>
+        <section>
+          <article>Father:</article><article>${this.person.father.name}</article><article>Mother:</article><article>${this.person.mother.name}</article>
+        </section>
+      </section>
     `;
   }
 

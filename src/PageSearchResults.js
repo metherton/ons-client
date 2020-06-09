@@ -60,6 +60,18 @@ export class PageSearchResults extends LitElement {
 
   __onNavClicked(ev) {
     const person = this.persons.find(p => p.id === ev.currentTarget.id);
+    const father = this.persons.filter(p => p.childRelation.includes(person.parentRelation)).find(m => m.sex === "M")
+    const mother = this.persons.filter(p => p.childRelation.includes(person.parentRelation)).find(m => m.sex === "F")
+    if (father) {
+      person.father = {name: father.firstName + " " + father.surname, id: father.id}
+    } else {
+      person.father = {};
+    }
+    if (mother) {
+      person.mother = {name: mother.firstName + " " + mother.surname, id: mother.id}
+    } else {
+      person.mother = {};
+    }
     store.dispatch(setPerson(person));
     this.dispatchEvent(new CustomEvent('navigate', {detail: 'person'}));
   }
