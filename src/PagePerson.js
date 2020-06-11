@@ -19,6 +19,39 @@ export class PagePerson extends LitElement {
         margin: 0 auto;
       }
 
+      section.container {
+        background: lightcyan;
+        margin: 10px;
+        font-size: 0.8em;
+      }
+
+      section.row {
+        display: flex;
+        padding: 10px;
+        flex-wrap: wrap;
+      }
+
+      article {
+        padding: 5px;
+      }
+
+      .col1 {
+        flex: 1%;
+      }
+
+      .col2 {
+        flex: 5%;
+      }
+
+      .col3 {
+        flex: 1%;
+        margin-left: 20px;
+      }
+
+      .col4 {
+        flex: 40%;
+      }
+
     `;
   }
 
@@ -34,18 +67,18 @@ export class PagePerson extends LitElement {
 
   render() {
     return html`
-      <section>
-        <section>
-          <article>First Name:</article><article>${this.person.firstName}</article><article>Surname:</article><article>${this.person.surname}</article>
+      <section class="container">
+        <section class="row">
+          <article class="col1">First Name:</article><article class="col2">${this.person.firstName}</article><article class="col3">Surname:</article><article class="col4">${this.person.surname}</article>
         </section>
-        <section>
-          <article>Birth Date:</article><article>${this.person.dateOfBirth}</article><article>Place:</article><article>${this.person.place}</article>
+        <section class="row">
+          <article class="col1">Birth Date:</article><article class="col2">${this.person.dateOfBirth}</article><article class="col3">Place:</article><article class="col4">${this.person.place}</article>
         </section>
-        <section>
-          <article>Death Date:</article><article>${this.person.dateOfDeath}</article><article>Place:</article><article>${this.person.placeOfDeath}</article>
+        <section class="row">
+          <article class="col1">Death Date:</article><article class="col2">${this.person.dateOfDeath}</article><article class="col3">Place:</article><article class="col4">${this.person.placeOfDeath}</article>
         </section>
-        <section>
-          <article>Father:</article><article>${this.person.father.name}</article><article>Mother:</article><article>${this.person.mother.name}</article>
+        <section class="row">
+          <article class="col1">Father:</article><article class="col2">${this.person.father.name}</article><article class="col3">Mother:</article><article class="col4">${this.person.mother.name}</article>
         </section>
       </section>
     `;
