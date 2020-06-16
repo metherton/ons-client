@@ -82,7 +82,7 @@ export class PageFamilyTrees extends LitElement {
       .then((response) => {
         progressBar.close();
      //   this.persons = response[0];
-        store.dispatch(setInitialPersons(response[0]));
+        store.dispatch(setInitialPersons(response));
      //   store.dispatch({type: 'SET_INITIAL_PERSONS', data: response[0]});
         let event = new CustomEvent('show-persons', {
           detail: {}
