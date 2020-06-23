@@ -10,6 +10,7 @@ import '@material/mwc-list/mwc-list-item';
 import { PageHome } from './PageHome.js';
 import { PageSearch } from './PageSearch.js';
 import { PageFamilyTrees } from './PageFamilyTrees.js';
+import { PageGedcomSearchResults } from './PageGedcomSearchResults.js';
 import { PageSearchResults } from './PageSearchResults.js';
 import { PagePerson } from './PagePerson.js';
 
@@ -20,6 +21,7 @@ import store from './store/configureStore';
 import {
   addPerson,
   setInitialPersons,
+  setInitialGedcomPersons,
   toggleTodo,
   setPerson,
   VisibilityFilters
@@ -30,6 +32,7 @@ export class OnsClient extends LitElement {
     return {
       page: { type: String },
       persons: {type: Array},
+      gedcomPersons: {type: Array},
       person: {type: String},
     };
   }
@@ -38,6 +41,7 @@ export class OnsClient extends LitElement {
     super();
     this.page = 'home';
     this.persons = [];
+    this.gedcomPersons = [];
     this.person = '';
   }
 
@@ -51,6 +55,11 @@ export class OnsClient extends LitElement {
 
   toggleDrawer(e) {
     this.shadowRoot.getElementById('leftdrawer').open = !this.shadowRoot.getElementById('leftdrawer').open;
+  }
+
+  showGedcomPersons(e) {
+    this.page = 'gedcomResults';
+    this._renderPage();
   }
 
   showPersons(e) {
@@ -113,7 +122,7 @@ export class OnsClient extends LitElement {
     switch (this.page) {
       case 'home':
         return html`
-          <page-home @navigate=${this.__onNavClickedExternal}></page-home>
+          <page-home .bla="hello" @navigate=${this.__onNavClickedExternal}></page-home>
         `;
       case 'search':
         return html`
@@ -121,11 +130,15 @@ export class OnsClient extends LitElement {
         `;
       case 'familyTrees':
         return html`
-          <page-family-trees @show-persons=${this.showPersons}></page-family-trees>
+          <page-family-trees @show-gedcom-persons=${this.showGedcomPersons}></page-family-trees>
         `;
       case 'results':
         return html`
           <page-search-results @navigate=${this.__onPersonSelected} .persons=${store.getState().persons}></page-search-results>
+        `;
+      case 'gedcomResults':
+        return html`
+          <page-gedcom-search-results @navigate=${this.__onPersonSelected} .persons=${store.getState().gedcomPersons}></page-gedcom-search-results>
         `;
       case 'person':
         return html`

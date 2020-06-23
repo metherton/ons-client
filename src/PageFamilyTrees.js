@@ -6,7 +6,7 @@ import onsApp from './reducers'
 import store from './store/configureStore';
 import {
   addPerson,
-  setInitialPersons,
+  setInitialGedcomPersons,
   toggleTodo,
   setPerson,
   VisibilityFilters
@@ -34,8 +34,6 @@ export class PageFamilyTrees extends LitElement {
       section {
         margin-left: 20px;
       }
-
-
     `;
   }
 
@@ -61,7 +59,7 @@ export class PageFamilyTrees extends LitElement {
   }
 
   handleClick(e) {
-   // const request = 'http://www.martinetherton.com:8080/gedcom/' + e.currentTarget.id;
+    //const request = 'http://www.martinetherton.com:8080/gedcom/' + e.currentTarget.id;
     const request = 'http://localhost:8080/gedcom/' + e.currentTarget.id;
     const list = this.shadowRoot.getElementById('list');
     const london1 = this.shadowRoot.getElementById('london1');
@@ -81,10 +79,8 @@ export class PageFamilyTrees extends LitElement {
       .then(response => response.json())
       .then((response) => {
         progressBar.close();
-     //   this.persons = response[0];
-        store.dispatch(setInitialPersons(response));
-     //   store.dispatch({type: 'SET_INITIAL_PERSONS', data: response[0]});
-        let event = new CustomEvent('show-persons', {
+        store.dispatch(setInitialGedcomPersons(response));
+        let event = new CustomEvent('show-gedcom-persons', {
           detail: {}
         });
         this.dispatchEvent(event);

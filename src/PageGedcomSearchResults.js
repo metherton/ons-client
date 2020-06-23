@@ -16,7 +16,7 @@ import {
   VisibilityFilters
 } from './actions'
 
-export class PageSearchResults extends LitElement {
+export class PageGedcomSearchResults extends LitElement {
 
   static get styles() {
     return css`
@@ -76,11 +76,6 @@ export class PageSearchResults extends LitElement {
     this.dispatchEvent(new CustomEvent('navigate', {detail: 'person'}));
   }
 
-  formatDate(timestamp) {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(timestamp).toLocaleDateString('en-GB', options);
-  }
-
   render() {
     return html`
       <mwc-list>
@@ -92,18 +87,19 @@ export class PageSearchResults extends LitElement {
                 return 1;
               }
                 return 0;
-              }
+
+            }
             ).map(person => html`
               <mwc-list-item id=${person.id} @click=${this.__onNavClicked} class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
-                <p>Born:&nbsp;${person.address}&nbsp;${this.formatDate(person.dateOfBirth)}</p>
+                <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
               </mwc-list-item>
               <li divider role="separator"></li>
             `)}
             ${this.persons.filter(person => person.surname !== "" && person.surname.toUpperCase() !== "ETHERTON" && person.firstName !== "").map(person => html`
               <mwc-list-item id=${person.id} @click=${this.__onNavClicked} class="person">
                 <h3>${person.firstName}&nbsp;${person.surname}</h3>
-                <p>Born:&nbsp;${person.address}&nbsp;${this.formatDate(person.dateOfBirth)}</p>
+                <p>Born:&nbsp;${person.place}&nbsp;${person.dateOfBirth}</p>
               </mwc-list-item>
               <li divider role="separator"></li>
             `)}
@@ -113,4 +109,4 @@ export class PageSearchResults extends LitElement {
 
 }
 
-customElements.define('page-search-results', PageSearchResults);
+customElements.define('page-gedcom-search-results', PageGedcomSearchResults);

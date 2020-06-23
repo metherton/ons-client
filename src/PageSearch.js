@@ -7,6 +7,13 @@ import { createStore } from 'redux'
 import onsApp from './reducers'
 
 import store from './store/configureStore';
+import {
+  addPerson,
+  setInitialPersons,
+  toggleTodo,
+  setPerson,
+  VisibilityFilters
+} from './actions'
 
 export class PageSearch extends LitElement {
 
@@ -40,8 +47,6 @@ export class PageSearch extends LitElement {
   constructor() {
     super();
     this.persons = [];
-    this.firstName = '';
-    this.surname = '';
   }
 
   updateFirstName(e) {
@@ -61,15 +66,14 @@ export class PageSearch extends LitElement {
     submit.disabled = true;
     const progressBar = this.shadowRoot.getElementById('progress');
     progressBar.open();
-//    const section = this.shadowRoot.getElementById('container');
-//    section.classList.add('clicked');
-    const request = 'http://www.martinetherton.com:8080/gedcom/london1?firstName=' + this.firstName + '&surname=' + this.surname;
-    fetch(request)
+    const url = new URL('http://localhost:8080/persons');
+    const params = {firstName: this.firstName, surname: this.surname};
+    Object.keys(params).forEach(key => {if (params[key]) {url.searchParams.append(key, params[key])}})
+    fetch(url)
       .then(response => response.json())
       .then((response) => {
         progressBar.close();
-     //   this.persons = response[0];
-        store.dispatch({type: 'SET_INITIAL_PERSONS', data: response[0]});
+        store.dispatch(setInitialPersons(response));
         let event = new CustomEvent('show-persons', {
           detail: {
           }

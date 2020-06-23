@@ -3,6 +3,7 @@
  */
 
 export const ADD_PERSON = 'ADD_PERSON'
+export const SET_INITIAL_GEDCOM_PERSONS = 'SET_INITIAL_GEDCOM_PERSONS'
 export const SET_INITIAL_PERSONS = 'SET_INITIAL_PERSONS'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_PERSON = 'SET_PERSON'
@@ -27,6 +28,10 @@ export function addPerson(person) {
 
 export function setInitialPersons(persons) {
   return { type: SET_INITIAL_PERSONS, persons }
+}
+
+export function setInitialGedcomPersons(gedcomPersons) {
+  return { type: SET_INITIAL_GEDCOM_PERSONS, gedcomPersons }
 }
 
 export function toggleTodo(index) {
