@@ -69,7 +69,6 @@ export class PageHome extends LitElement {
           <section class="container">
             <img src="/assets/house.jpeg" alt="Tulips" style="width:100%;">
             <section class="content">
-            <h3>o${this.bla}</h3>
               <h1>Etherton One Name Study</h1>
               <p>Learn about your Etherton ancestors and roots</p>
             </section>
