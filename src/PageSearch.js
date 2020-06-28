@@ -67,6 +67,7 @@ export class PageSearch extends LitElement {
     const progressBar = this.shadowRoot.getElementById('progress');
     progressBar.open();
     const url = new URL('http://localhost:8080/persons');
+   // const url = new URL('http://www.martinetherton.com:8080/persons');
     const params = {firstName: this.firstName, surname: this.surname};
     Object.keys(params).forEach(key => {if (params[key]) {url.searchParams.append(key, params[key])}})
     fetch(url)

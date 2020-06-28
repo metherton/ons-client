@@ -76,15 +76,7 @@ export class PageHome extends LitElement {
         </mwc-list-item>
       </li>
       <li>
-        <mwc-list-item>Search All Records</mwc-list-item>
-      </li>
-      <li divider role="separator"></li>
-      <li>
-        <mwc-list-item>Search Births, Marriages & Deaths</mwc-list-item>
-      </li>
-      <li divider role="separator"></li>
-      <li>
-        <mwc-list-item>Search Census & Electoral Rolls</mwc-list-item>
+        <mwc-list-item id="home-search" @click=${this.__onNavClicked}>Search All Records</mwc-list-item>
       </li>
       <li divider role="separator"></li>
       <li>
