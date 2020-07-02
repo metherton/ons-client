@@ -31,7 +31,11 @@ export class PageSearch extends LitElement {
       }
 
       article {
-        padding: 1% 1% 1% 2%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+      }
+      section {
+        padding-left: 5%;
       }
 
     `;
@@ -86,11 +90,12 @@ export class PageSearch extends LitElement {
   render() {
     return html`
       <section id="container">
+        <h3>Find your Etherton</h3>
         <article>
-          <mwc-textfield id="firstName" @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
+          <mwc-textfield outlined id="firstName" @change="${this.updateFirstName}"  label="First Name"></mwc-textfield>
         </article>
         <article>
-          <mwc-textfield id="surname" @change="${this.updateSurname}" label="Surname"></mwc-textfield>
+          <mwc-textfield outlined value="Etherton" id="surname" @change="${this.updateSurname}" label="Surname">${this.surname}</mwc-textfield>
         </article>
         <article>
           <mwc-button id="submit" @click="${this.handleClick}" raised icon="search" label="Search"></mwc-button>

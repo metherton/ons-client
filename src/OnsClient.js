@@ -13,6 +13,7 @@ import { PageFamilyTrees } from './PageFamilyTrees.js';
 import { PageGedcomSearchResults } from './PageGedcomSearchResults.js';
 import { PageSearchResults } from './PageSearchResults.js';
 import { PagePerson } from './PagePerson.js';
+import { PageContact } from './PageContact.js';
 
 import { createStore } from 'redux'
 import onsApp from './reducers'
@@ -90,13 +91,13 @@ export class OnsClient extends LitElement {
             </mwc-list-item>
           </li>
           <li>
-            <mwc-list-item graphic="icon">
+            <mwc-list-item id="dna" graphic="icon" @click=${this.__onNavClicked} >
               <span>DNA</span>
               <mwc-icon slot="graphic">local_pharmacy</mwc-icon>
             </mwc-list-item>
           </li>
           <li>
-            <mwc-list-item graphic="icon">
+            <mwc-list-item id="contact" graphic="icon" @click=${this.__onNavClicked} >
               <span>Contact</span>
               <mwc-icon slot="graphic">contact_support</mwc-icon>
             </mwc-list-item>
@@ -143,6 +144,10 @@ export class OnsClient extends LitElement {
       case 'person':
         return html`
           <page-person .person=${store.getState().person}></page-person>
+        `;
+      case 'contact':
+        return html`
+          <page-contact></page-contact>
         `;
       default:
         return html`
