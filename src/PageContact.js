@@ -18,6 +18,26 @@ export class PageContact extends LitElement {
 
   static get styles() {
     return css`
+
+      mwc-list {
+        width: 100%;
+      }
+      mwc-list-item {
+        width: 100%;
+      }
+      mwc-list-item * {
+        width: 100%;
+      }
+
+      mwc-textfield * {
+        width: 100%;
+      }
+
+      input {
+        width: 90%;
+        background: red;
+      }
+
       :host {
         min-height: 100vh;
         display: flex;
@@ -98,26 +118,25 @@ export class PageContact extends LitElement {
       <section>
         <h3>Contact</h3>
         <mwc-list id="list" multi>
-          <li>
+            <mwc-list-item>
+
+            </mwc-list-item>
             <mwc-list-item>
                 <mwc-textfield id="firstName" @change="${this.updateFirstName}"  label="Your Name"></mwc-textfield>
             </mwc-list-item>
-          </li>
-          <li>
+
             <mwc-list-item>
                 <mwc-textfield id="firstName" @change="${this.updateFirstName}"  label="Your Email"></mwc-textfield>
             </mwc-list-item>
-          </li>
-          <li>
+
             <mwc-list-item style="height: 100%;">
                 <mwc-textarea label="Your Question"></mwc-textarea>
             </mwc-list-item>
-          </li>
-          <li>
+
             <mwc-list-item @click="${this.handleClick}" id="sussex2" graphic="email">
               <mwc-button id="submit" @click="${this.handleClick}" raised label="Send"></mwc-button>
             </mwc-list-item>
-          </li>
+
         </mwc-list>
       </section>
     `;
